@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVCExcercise.Models.Proj>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Proj List</title>
+</head>
+<body>
+    <div>
+        <h1>Proj List</h1>
+        <div>
+            @foreach (var proj in Model)
+            {
+                <ul>
+                    <li>
+                        Project: @proj.ProjectId
+                        <ul>
+                            <li>Number : @proj.ProjectNumber</li>
+                            @if (proj.AllSubmissions.Count > 0)
+                            {
+                            <li>
+                                Submissions
+                                @foreach (var sub in @proj.AllSubmissions)
+                                {
+                                    <ul>
+                                        <li>
+                                            SubmissionID: @sub.SubmissionId
+                                            <ul>
+                                                <li>
+                                                    Number: @sub.SubmissionNumber
+                                                </li>
+                                                <li>
+                                                    Type: @sub.Type
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                }
+                            </li>
+                            }
+                        </ul>
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+</body>
+</html>
